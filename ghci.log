@@ -1,0 +1,192 @@
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-05-19 15:41:30.876068519
+>>> 3+2*5
+13
+2022-05-19 15:55:22.20963766
+>>> 5-4-8
+-7
+2022-05-19 15:55:44.030657881
+>>> sqrt 2
+1.4142135623730951
+2022-05-19 16:00:03.073534509
+>>> double 3
+
+<interactive>:4:1: error: Variable not in scope: double :: t0 -> t
+2022-05-19 16:03:16.668234863
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-05-26 15:02:26.132969517
+>>> maxBound::Int
+9223372036854775807
+2022-05-26 15:03:36.519281535
+>>> 2 ^63-1
+9223372036854775807
+2022-05-26 15:05:01.477596339
+>>> minBound::Int
+-9223372036854775808
+2022-05-26 15:05:37.745247074
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+Ok, no modules loaded.
+2022-05-26 15:49:02.472478609
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-05-26 15:49:02.508406489
+>>> double3
+
+<interactive>:6:1: error:
+    • Variable not in scope: double3
+    • Perhaps you meant ‘double’ (line 4)
+2022-05-26 15:56:22.960494031
+>>> double 3
+6
+2022-05-26 15:57:06.138226
+>>> :q
+Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-06-09 14:55:52.603655666
+>>> 2+3*4
+14
+2022-06-09 14:58:46.210791379
+>>> (2+3)*4
+20
+2022-06-09 15:00:16.470166101
+>>> :i sqrt
+type Floating :: * -> Constraint
+class Fractional a => Floating a where
+  ...
+  sqrt :: a -> a
+  ...
+  	-- Defined in ‘GHC.Float’
+2022-06-09 15:00:55.766036329
+>>> sqrt (3^2+4^2)
+5.0
+2022-06-09 15:05:21.870625556
+>>> sqrt (25::int)
+
+<interactive>:5:7: error:
+    • Could not deduce (Num int) arising from the literal ‘25’
+      from the context: Floating a
+        bound by the inferred type of it :: Floating a => a
+        at <interactive>:5:1-14
+      Possible fix:
+        add (Num int) to the context of
+          an expression type signature:
+            forall int. int
+    • In the first argument of ‘sqrt’, namely ‘(25 :: int)’
+      In the expression: sqrt (25 :: int)
+      In an equation for ‘it’: it = sqrt (25 :: int)
+2022-06-09 15:08:19.499199335
+>>> sqrt (25::Double)
+5.0
+2022-06-09 15:11:22.023265153
+>>> hoge=[3,1,4,1,5]::[Int]
+2022-06-09 15:51:07.09041701
+>>> hoge
+[3,1,4,1,5]
+2022-06-09 15:51:14.488376421
+>>> head hoge
+3
+2022-06-09 15:51:39.779719549
+>>> tail hoge
+[1,4,1,5]
+2022-06-09 15:51:58.516904148
+>>> hoge !!0
+3
+2022-06-09 15:55:19.070572183
+>>> hoge 2 !! hoge
+
+<interactive>:12:1: error:
+    • Couldn't match expected type: t0 -> [a]
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the first argument of ‘(!!)’, namely ‘hoge 2’
+      In the expression: hoge 2 !! hoge
+    • Relevant bindings include it :: a (bound at <interactive>:12:1)
+
+<interactive>:12:11: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[Int]’
+    • In the second argument of ‘(!!)’, namely ‘hoge’
+      In the expression: hoge 2 !! hoge
+      In an equation for ‘it’: it = hoge 2 !! hoge
+2022-06-09 15:57:00.620197446
+>>> hoge 2 !!
+
+<interactive>:13:10: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-09 15:57:18.055170867
+>>> hoge !! 2
+4
+2022-06-09 15:57:56.230413245
+>>> take 3hoge
+[3,1,4]
+2022-06-09 15:58:12.030386722
+>>> take 10 hoge
+[3,1,4,1,5]
+2022-06-09 16:00:20.834367583
+>>> drop 10 hoge
+[]
+2022-06-09 16:00:41.195323857
+>>> length haed
+
+<interactive>:18:8: error:
+    • Variable not in scope: haed :: t0 a0
+    • Perhaps you meant ‘head’ (imported from Prelude)
+2022-06-09 16:01:17.890607536
+>>> length hoge
+5
+2022-06-09 16:01:56.932048025
+>>> length []
+0
+2022-06-09 16:02:12.266264453
+>>> sum hoge
+14
+2022-06-09 16:02:24.531969066
+>>> product hoge
+60
+2022-06-09 16:03:42.464630663
+>>> hoge ++ hoge
+[3,1,4,1,5,3,1,4,1,5]
+2022-06-09 16:04:57.619499679
+>>> reverse hoge
+[5,1,4,1,3]
+2022-06-09 16:05:56.303226773
+>>> :e scr/First.ht
+catn: scr/First.ht: openFile: does not exist (No such file or directory)
+2022-06-09 16:08:18.934862115
+>>> :load scr/First.ht
+target ‘scr/First.ht’ is not a module name or a source file
+2022-06-09 16:08:18.961697311
+>>> :e src/First.ht
+catn: src/First.ht: openFile: does not exist (No such file or directory)
+2022-06-09 16:09:47.616715362
+>>> :load src/First.ht
+target ‘src/First.ht’ is not a module name or a source file
+2022-06-09 16:09:47.71442495
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+Ok, no modules loaded.
+2022-06-09 16:11:04.643202453
+>>> :load src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-09 16:11:04.69381035
+>>> [1of1] Compiling First
+
+<interactive>:31:3: error: Variable not in scope: of1
+
+<interactive>:31:8: error: Data constructor not in scope: Compiling
+
+<interactive>:31:18: error: Data constructor not in scope: First
+2022-06-09 16:12:06.264102598
+>>> 
