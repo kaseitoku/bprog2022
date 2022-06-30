@@ -282,3 +282,279 @@ take 3[1,2,3,4,5] :: Num a => [a]
 2022-06-16 16:07:21.029597578
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-06-23 14:56:12.293699142
+>>> :i
+syntax: ':i <thing-you-want-info-about>'
+2022-06-23 14:56:19.042905083
+>>> :i Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num NominalDiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.NominalDiffTime’
+instance Num DiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.DiffTime’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+2022-06-23 14:56:37.025679315
+>>> 1==2
+False
+2022-06-23 15:06:31.039169146
+>>> 1<2
+True
+2022-06-23 15:06:43.709065519
+>>> 'a' <'b'
+True
+2022-06-23 15:11:28.239328534
+>>> 'a'<'B'
+False
+2022-06-23 15:11:48.144576152
+>>> 1/=1
+False
+2022-06-23 15:16:17.595099616
+>>> :info abs
+type Num :: * -> Constraint
+class Num a where
+  ...
+  abs :: a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+2022-06-23 15:30:40.612310504
+>>> abs
+
+<interactive>:9:1: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-23 15:39:22.786756702
+>>> abs(-234)
+234
+2022-06-23 15:39:41.601332032
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-06-30 14:56:33.86446431
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-06-30 15:01:11.368080097
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-06-30 15:01:42.125406638
+>>> [x^2|x<-[1..5]]
+[1,4,9,16,25]
+2022-06-30 15:02:21.588272243
+>>> map (^2)[1..5]
+[1,4,9,16,25]
+2022-06-30 15:05:12.634131131
+>>> [x * 2 | x <- [1..5] ]
+[2,4,6,8,10]
+2022-06-30 15:12:06.686800357
+>>> [ x `div` 2 | x <- [1..5]]
+[0,1,1,2,2]
+2022-06-30 15:13:46.12517372
+>>> [ x `divMod` 2 | x <- [1..5]]
+[(0,1),(1,0),(1,1),(2,0),(2,1)]
+2022-06-30 15:15:36.902773461
+>>> [(x , y) | x <- "a,b,c", y <- [4,5]]
+[('a',4),('a',5),(',',4),(',',5),('b',4),('b',5),(',',4),(',',5),('c',4),('c',5)]
+2022-06-30 15:21:00.387735212
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+   5  
+   6      quadruple:: Int -> Int
+   7      quadruple x = double (double x)
+   8  
+   9      factorial :: Integer -> Integer
+  10      factorial n = product[1..n]
+  11  
+  12      average :: [Int] -> Int 
+  13      average xs = sum xs`div`length xs
+  14  
+  15      ave :: [Int] -> Int
+  16      ave xs = div(sum xs)(length xs)
+  17  
+  18      myinit ::[a] -> [a]
+  19      myinit (x:[]) = []
+  20      myinit (x:xs) = x : (init xs)
+  21  
+  22      myconcat :: [[a]] -> [a]
+  23      myconcat xss = [ x | xs <- xss,x <- xs]
+Ok, no modules loaded.
+2022-06-30 15:29:54.234763179
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:29:54.265340871
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+[1,2,3,4,5,6,7,8,9]
+2022-06-30 15:35:28.382215507
+>>> [ 1 | _ <- [1..5] ]
+[1,1,1,1,1]
+2022-06-30 15:48:00.06254719
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+   5  
+   6      quadruple:: Int -> Int
+   7      quadruple x = double (double x)
+   8  
+   9      factorial :: Integer -> Integer
+  10      factorial n = product[1..n]
+  11  
+  12      average :: [Int] -> Int 
+  13      average xs = sum xs`div`length xs
+  14  
+  15      ave :: [Int] -> Int
+  16      ave xs = div(sum xs)(length xs)
+  17  
+  18      myinit ::[a] -> [a]
+  19      myinit (x:[]) = []
+  20      myinit (x:xs) = x : (init xs)
+  21  
+  22      myconcat :: [[a]] -> [a]
+  23      myconcat xss = [ x | xs <- xss,x <- xs]
+  24  
+  25      mylength :: [a] -> Int
+  26      mylenght xs =sum [ 1 | _<- xs]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:5: error:
+    The type signature for ‘mylength’ lacks an accompanying binding
+      Perhaps you meant ‘mylenght’ (Defined at src/First.hs:26:5)
+   |
+25 |     mylength :: [a] -> Int
+   |     ^^^^^^^^
+Failed, no modules loaded.
+2022-06-30 15:50:42.37509368
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:5: error:
+    The type signature for ‘mylength’ lacks an accompanying binding
+      Perhaps you meant ‘mylenght’ (Defined at src/First.hs:26:5)
+   |
+25 |     mylength :: [a] -> Int
+   |     ^^^^^^^^
+Failed, no modules loaded.
+2022-06-30 15:50:42.471915265
+>>> :e
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+   5  
+   6      quadruple:: Int -> Int
+   7      quadruple x = double (double x)
+   8  
+   9      factorial :: Integer -> Integer
+  10      factorial n = product[1..n]
+  11  
+  12      average :: [Int] -> Int 
+  13      average xs = sum xs`div`length xs
+  14  
+  15      ave :: [Int] -> Int
+  16      ave xs = div(sum xs)(length xs)
+  17  
+  18      myinit ::[a] -> [a]
+  19      myinit (x:[]) = []
+  20      myinit (x:xs) = x : (init xs)
+  21  
+  22      myconcat :: [[a]] -> [a]
+  23      myconcat xss = [ x | xs <- xss,x <- xs]
+  24  
+  25      mylength :: [a] -> Int
+  26      mylenght xs =sum [ 1 | _<- xs]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:5: error:
+    The type signature for ‘mylength’ lacks an accompanying binding
+      Perhaps you meant ‘mylenght’ (Defined at src/First.hs:26:5)
+   |
+25 |     mylength :: [a] -> Int
+   |     ^^^^^^^^
+Failed, no modules loaded.
+2022-06-30 15:52:38.987286992
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3      double :: Int -> Int
+   4      double x = x + x
+   5  
+   6      quadruple:: Int -> Int
+   7      quadruple x = double (double x)
+   8  
+   9      factorial :: Integer -> Integer
+  10      factorial n = product[1..n]
+  11  
+  12      average :: [Int] -> Int 
+  13      average xs = sum xs`div`length xs
+  14  
+  15      ave :: [Int] -> Int
+  16      ave xs = div(sum xs)(length xs)
+  17  
+  18      myinit ::[a] -> [a]
+  19      myinit (x:[]) = []
+  20      myinit (x:xs) = x : (init xs)
+  21  
+  22      myconcat :: [[a]] -> [a]
+  23      myconcat xss = [ x | xs <- xss,x <- xs]
+  24  
+  25      mylength :: [a] -> Int
+  26      mylength xs =sum [ 1 | _<- xs]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:55:02.971283524
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:55:03.069298058
+>>> ['a' .. 'z']
+"abcdefghijklmnopqrstuvwxyz"
+2022-06-30 15:56:15.545111943
+>>> putStrLn
+
+<interactive>:17:1: error:
+    • No instance for (Show (String -> IO ()))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-30 15:57:06.383542947
+>>> putStrLn it
+abcdefghijklmnopqrstuvwxyz
+2022-06-30 15:57:47.740627263
+>>> putStrLn it
+
+<interactive>:19:10: error:
+    • Couldn't match type ‘()’ with ‘[Char]’
+      Expected: String
+        Actual: ()
+    • In the first argument of ‘putStrLn’, namely ‘it’
+      In the expression: putStrLn it
+      In an equation for ‘it’: it = putStrLn it
+2022-06-30 15:58:25.046670473
+>>> ['あ'..'ん']
+"\12354\12355\12356\12357\12358\12359\12360\12361\12362\12363\12364\12365\12366\12367\12368\12369\12370\12371\12372\12373\12374\12375\12376\12377\12378\12379\12380\12381\12382\12383\12384\12385\12386\12387\12388\12389\12390\12391\12392\12393\12394\12395\12396\12397\12398\12399\12400\12401\12402\12403\12404\12405\12406\12407\12408\12409\12410\12411\12412\12413\12414\12415\12416\12417\12418\12419\12420\12421\12422\12423\12424\12425\12426\12427\12428\12429\12430\12431\12432\12433\12434\12435"
+2022-06-30 16:00:07.267173142
+>>> putStrLn it
+あぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん
+2022-06-30 16:00:16.560315843
+>>> :q
+Leaving GHCi.
