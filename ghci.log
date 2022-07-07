@@ -558,3 +558,24 @@ abcdefghijklmnopqrstuvwxyz
 2022-06-30 16:00:16.560315843
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-07 16:05:10.571506638
+>>> :e src/Caesar.hs
+   1  module Ceasar where
+   2  
+   3      import Data.Char
+Ok, no modules loaded.
+2022-07-07 16:05:40.708191653
+>>> :l src/Caesar.hs
+[1 of 1] Compiling Ceasar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-07 16:05:40.790301379
+>>> ord 'A'
+65
+2022-07-07 16:06:13.344579674
+>>> ord 'a'
+97
+2022-07-07 16:07:03.637676841
+>>> :q
+Leaving GHCi.
