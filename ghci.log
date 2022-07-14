@@ -579,3 +579,114 @@ Ok, one module loaded.
 2022-07-07 16:07:03.637676841
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:11:33.065649687
+>>> :e src/Caesar.hs
+   1  module Ceasar where
+   2  
+   3      import Data.Char
+   4      
+   5      let2int :: Char -> Int
+   6      let2int c = ord c
+   7      
+Ok, no modules loaded.
+2022-07-14 15:12:14.996917694
+>>> :l src/Caesar.hs
+[1 of 1] Compiling Ceasar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-14 15:12:15.038686059
+>>> let2int 'a'
+
+97
+2022-07-14 15:12:44.036763175
+>>> 2022-07-14 15:12:44.036896546
+>>> let2int 'z'
+122
+2022-07-14 15:13:39.234634518
+>>> :e
+   1  module Ceasar where
+   2  
+   3      import Data.Char
+   4      
+   5      let2int :: Char -> Int
+   6      let2int c = ord c - ord 'a'
+[1 of 1] Compiling Ceasar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-14 15:15:32.821997679
+>>> letint 'z'
+
+<interactive>:7:1: error:
+    • Variable not in scope: letint :: Char -> t
+    • Perhaps you meant ‘let2int’ (line 6)
+2022-07-14 15:15:58.205838615
+>>> let2int 'z'
+25
+2022-07-14 15:16:16.464461797
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:21:04.874657145
+>>> :e
+No files to edit.
+2022-07-14 15:21:11.482412204
+>>> :e src/Ceasar.hs
+catn: src/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:22:55.23156113
+>>> :l src/Ceasar.hs
+
+<no location info>: error: can't find file: src/Ceasar.hs
+Failed, no modules loaded.
+2022-07-14 15:22:55.330789956
+>>> :e
+catn: src/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:24:21.718751529
+>>> :e
+catn: src/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:33:12.896053807
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:33:27.857014725
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:39:39.948717287
+>>> :e scr/Ceasar.hs
+catn: scr/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:40:35.011637927
+>>> :l scr/Ceasar.hs
+
+<no location info>: error: can't find file: scr/Ceasar.hs
+Failed, no modules loaded.
+2022-07-14 15:40:35.110632391
+>>> :e
+catn: scr/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:41:04.476772314
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:47:36.367315358
+>>> :e src/Ceasar.hs
+catn: src/Ceasar.hs: openFile: does not exist (No such file or directory)
+2022-07-14 15:48:07.074592791
+>>> :l src/Ceasar.hs
+
+<no location info>: error: can't find file: src/Ceasar.hs
+Failed, no modules loaded.
+2022-07-14 15:48:07.173316093
+>>> :e src/Ceasar.hs, interpreted
+catn: src/Ceasar.hs,: openFile: does not exist (No such file or directory)
+2022-07-14 15:48:39.566390367
+>>> :l src/Ceasar.hs, interpreted
+target ‘src/Ceasar.hs,’ is not a module name or a source file
+2022-07-14 15:48:39.666030929
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kyoka/bprog2022/.ghci
+2022-07-14 15:49:01.963905186
+>>> encode (-3) it
+
+<interactive>:1:1: error:
+    Variable not in scope: encode :: t0 -> t1 -> t
+
+<interactive>:1:13: error:
+    • Variable not in scope: it
+    • Perhaps you meant ‘id’ (imported from Prelude)
+2022-07-14 15:50:45.235166193
+>>> 
