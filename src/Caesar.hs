@@ -1,17 +1,17 @@
 module Ceasar where
 
-    import Data.Char
-    
-    let2int :: Char -> Int
-    let2int c = ord c - ord 'a'
+import Data.Char
 
-    int2let :: Int -> Char
-    int2let i = chr (i + ord 'a')
+let2int :: Char -> Int
+let2int c = ord c - ord 'a'
 
-    shift :: Int -> (Char -> Char)
-    shift n c
-        | islower c = int2let((let2int c + n)`mod`26)
-        | otherwise = c
+int2let :: Int -> Char
+int2let i = chr (i + ord 'a')
+
+shift :: Int -> (Char -> Char)
+shift n c
+    | isLower c = int2let((let2int c + n)`mod`26)
+    | otherwise = c
 
 encode :: Int -> (String -> String)
 encode n xs = [ shift n x | x <- xs ]
@@ -27,3 +27,33 @@ percent n m = (fromIntegral n / fromIntegral m) * 100
 
 count :: Char -> (String -> Int)
 count x xs = length [ x' | x' <- xs, x == x']
+
+freqs :: String -> [Float]
+freqs xs = [percent (count x xs) n | x <- ['a' .. 'z']]
+   where
+       n =length xs
+
+sample :: String
+sample = "abbcccddddeeeee"
+
+chispr :: [Float] -> [Float] -> Float
+chispr os es = sum [ (o - e)^2 / e | (o,e) <- zip os es ]
+
+rotate :: Int -> [a] -> [a]
+rotate n xs = drop n xs ++ take n xs
+
+table' :: [Float]
+table' = freqs "sampleAngou"
+
+sampleAngou :: String
+sampleAngou = "kdvnhoo lv ixq"
+
+crack :: String -> String
+crack xs = encode (-factor) xs
+    where
+        factor = head (positions (minimum chitad) chitad)
+        chitad = [chispr (rotate n table') table | n <- [0 .. 25]]
+        table' = freqs xs
+
+positions :: Eq a => a-> [a] -> [Int]
+positions x xs = [ i | (x',i)<- zip xs [0 ..], x == x']
